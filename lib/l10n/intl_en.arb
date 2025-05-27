@@ -1,0 +1,20 @@
+{
+  "appTitle" : "Github Explorer",
+  "rateLimitError": "Github does not allow more requests. Please try again later.",
+  "generalError": "Failed to fetch repositories",
+  "retry": "Retry",
+  "enterKeyword": "Search repositories",
+  "enterKeywordHint": "Start typing",
+  "searchButtonAccessibility": "Search repositories",
+  "clearQueryButtonAccessibility": "Clear query",
+  "noPullRequests": "No pull requests",
+  "noIssues": "No issues",
+  "cannotOpenLink": "Cannot open link",
+  "noData": "No data",
+  "language": "Language",
+  "stars": "Stars",
+  "issues": "Issues",
+  "pullRequests": "Pull requests",
+  "error": "Error",
+  "pageNotExist": "Given page does not exist"
+}

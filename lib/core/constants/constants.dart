@@ -1,0 +1,9 @@
+const double kDefaultHorizontalPadding = 16.0;
+const double kDefaultHorizontalMargin = 16.0;
+const double kDefaultVerticalPadding = 8.0;
+const double kDefaultVerticalMargin = 8.0;
+const double kDefaultVerticalSpacing = 8.0;
+const double kDefaultHorizontalSpacing = 8.0;
+const int kInitialGithubPageNo = 1;
+const int kGithubPerPage = 30;
+const int kScrollDelta = 200;
