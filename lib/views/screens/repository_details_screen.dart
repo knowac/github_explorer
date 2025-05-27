@@ -6,11 +6,11 @@ import 'package:github_explorer/generated/l10n.dart';
 import 'package:github_explorer/viewmodels/details.dart';
 import 'package:github_explorer/viewmodels/issues.dart';
 import 'package:github_explorer/viewmodels/pulls.dart';
-import 'package:github_explorer/views/widgets/texts/center_body_medium_text.dart';
 import 'package:github_explorer/views/widgets/boxes/default_vertical_sized_box.dart';
 import 'package:github_explorer/views/widgets/lists/issue_tile.dart';
 import 'package:github_explorer/views/widgets/lists/list_separator.dart';
 import 'package:github_explorer/views/widgets/loading_indicator.dart';
+import 'package:github_explorer/views/widgets/texts/center_body_medium_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RepositoryDetailsScreen extends ConsumerStatefulWidget {
@@ -152,175 +152,6 @@ class _RepositoryDetailsScreenState
                   );
                 }
 
-                final expanded = Hero(
-                  tag: 'expansion-tag',
-                  transitionOnUserGestures: true,
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: kDefaultVerticalPadding,
-                        horizontal: kDefaultHorizontalPadding,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: kDefaultVerticalSpacing,
-                        children: [
-                          Center(
-                            child: Row(
-                              spacing: kDefaultHorizontalSpacing,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                if (value.owner?.avatarUrl != null)
-                                  Image.network(
-                                    value.owner!.avatarUrl,
-                                    width: 24,
-                                  ),
-                                Text(
-                                  value.name,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Center(
-                            child: CenterBodyMediumText(
-                              value.description,
-                            ),
-                          ),
-                          Center(
-                            child: RichText(
-                              text: TextSpan(
-                                style: Theme.of(context).textTheme.bodyMedium,
-                                children: [
-                                  TextSpan(
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium
-                                        ?.copyWith(
-                                          color: Colors.blue,
-                                        ),
-                                    text: value.url,
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () async {
-                                        final uri = Uri.parse(value.url);
-                                        if (await canLaunchUrl(uri)) {
-                                          await launchUrl(
-                                            uri,
-                                            mode: LaunchMode.inAppWebView,
-                                          );
-                                        } else {
-                                          if (context.mounted) {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: CenterBodyMediumText(
-                                                  S.current.cannotOpenLink,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                        }
-                                      },
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Center(
-                            child: CenterBodyMediumText(
-                              '${S.current.language}: ${value.language}',
-                            ),
-                          ),
-                          Center(
-                            child: CenterBodyMediumText(
-                              '${S.current.stars}: ${value.stars.toString()}',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-                final collapsed = Hero(
-                  tag: 'expansion-tag',
-                  transitionOnUserGestures: true,
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: kDefaultVerticalPadding,
-                        horizontal: kDefaultHorizontalPadding,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: kDefaultVerticalSpacing,
-                        children: [
-                          Center(
-                            child: Row(
-                              spacing: kDefaultHorizontalSpacing,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                if (value.owner?.avatarUrl != null)
-                                  Image.network(
-                                    value.owner!.avatarUrl,
-                                    width: 24,
-                                  ),
-                                Text(
-                                  value.name,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Center(
-                            child: RichText(
-                              text: TextSpan(
-                                style: Theme.of(context).textTheme.bodyMedium,
-                                children: [
-                                  TextSpan(
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium
-                                        ?.copyWith(
-                                          color: Colors.blue,
-                                        ),
-                                    text: value.url,
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () async {
-                                        final uri = Uri.parse(value.url);
-                                        if (await canLaunchUrl(uri)) {
-                                          await launchUrl(
-                                            uri,
-                                            mode: LaunchMode.inAppWebView,
-                                          );
-                                        } else {
-                                          if (context.mounted) {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: CenterBodyMediumText(
-                                                  S.current.cannotOpenLink,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                        }
-                                      },
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -330,7 +161,99 @@ class _RepositoryDetailsScreenState
                           isExpanded = !isExpanded;
                         });
                       },
-                      child: isExpanded ? expanded : collapsed,
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: kDefaultVerticalPadding,
+                            horizontal: kDefaultHorizontalPadding,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisSize: MainAxisSize.min,
+                            spacing: kDefaultVerticalSpacing,
+                            children: [
+                              Center(
+                                child: Row(
+                                  spacing: kDefaultHorizontalSpacing,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    if (value.owner?.avatarUrl != null)
+                                      Image.network(
+                                        value.owner!.avatarUrl,
+                                        width: 24,
+                                      ),
+                                    Text(
+                                      value.name,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineMedium,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              if (isExpanded)
+                                Center(
+                                  child: CenterBodyMediumText(
+                                    value.description,
+                                  ),
+                                ),
+                              Center(
+                                child: RichText(
+                                  text: TextSpan(
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium,
+                                    children: [
+                                      TextSpan(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.copyWith(
+                                              color: Colors.blue,
+                                            ),
+                                        text: value.url,
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () async {
+                                            final uri = Uri.parse(value.url);
+                                            if (await canLaunchUrl(uri)) {
+                                              await launchUrl(
+                                                uri,
+                                                mode: LaunchMode.inAppWebView,
+                                              );
+                                            } else {
+                                              if (context.mounted) {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content:
+                                                        CenterBodyMediumText(
+                                                      S.current.cannotOpenLink,
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                            }
+                                          },
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              if (isExpanded)
+                                Center(
+                                  child: CenterBodyMediumText(
+                                    '${S.current.language}: ${value.language}',
+                                  ),
+                                ),
+                              if (isExpanded)
+                                Center(
+                                  child: CenterBodyMediumText(
+                                    '${S.current.stars}: ${value.stars.toString()}',
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 );
