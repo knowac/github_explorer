@@ -9,6 +9,7 @@ import 'package:github_explorer/models/repository_details.dart';
 import 'package:github_explorer/services/github_service.dart';
 import 'package:github_explorer/services/github_service_provider.dart';
 import 'package:github_explorer/views/screens/repository_details_screen.dart';
+import 'package:github_explorer/views/widgets/loading_indicator.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:network_image_mock/network_image_mock.dart';
@@ -52,11 +53,18 @@ void main() {
       mockService = MockGithubService();
       await S.load(Locale.fromSubtags(languageCode: 'en'));
 
+      // Need to override as infinite spinner animation is causing timeouts
+      LoadingIndicator.overrideBuilder = () => const Text('MockLoading');
+
       app = MaterialApp(
         home: Scaffold(
           body: RepositoryDetailsScreen(owner: 'owner', name: 'name'),
         ),
       );
+    });
+
+    tearDown(() {
+      LoadingIndicator.overrideBuilder = null;
     });
 
     testWidgets('RepositoryDetailsScreen has a card', (tester) async {
@@ -172,13 +180,29 @@ void main() {
       // Then
       await mockNetworkImagesFor(
           () async => await tester.pump(const Duration(milliseconds: 1000)));
+      expect(find.textContaining(S.current.issues, findRichText: true),
+          findsOneWidget);
 
-      expect(find.text(S.current.issues), findsOneWidget);
+      expect(find.byType(Tab).at(0), findsOneWidget);
       expect(find.byType(ListTile), findsNWidgets(3));
       expect(find.text('Issue1'), findsOneWidget);
       expect(find.text('Issue2'), findsOneWidget);
       expect(find.text('Issue3'), findsOneWidget);
       expect(find.text('Issue4'), findsNothing);
+
+      // Switch tab
+      final secondTab = find.byType(Tab).at(1);
+      expect(find.textContaining(S.current.pullRequests), findsOneWidget);
+      expect(secondTab, findsOneWidget);
+
+      await tester.tap(secondTab);
+      await tester.pumpAndSettle(Duration(seconds: 5));
+
+      expect(find.byType(ListTile), findsNWidgets(4));
+      expect(find.textContaining('Pull1'), findsOneWidget);
+      expect(find.textContaining('Pull2'), findsOneWidget);
+      expect(find.textContaining('Pull3'), findsOneWidget);
+      expect(find.textContaining('Pull4'), findsOneWidget);
     });
 
     testWidgets('RepositoryDetailsScreen card has correct text',

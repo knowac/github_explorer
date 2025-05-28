@@ -333,7 +333,8 @@ class _RepositoryDetailsScreenState
                           ),
                         ),
                         data: (value) {
-                          if (index == value.length - 1) {
+                          if (index == value.length - 1 &&
+                              value.length >= kGithubPerPage) {
                             return const Padding(
                               padding: EdgeInsets.symmetric(
                                 vertical: kDefaultVerticalPadding,
