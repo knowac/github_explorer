@@ -1,0 +1,25 @@
+name: app
+description: Main app for integration and running functionalities
+publish_to: 'none'
+
+version: 0.0.1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core:
+    path: ../packages/core
+  list_repos:
+    path: ../packages/features/list_repos
+  show_repos:
+    path: ../packages/features/show_repos
+  flutter_riverpod: any
+  go_router: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: any

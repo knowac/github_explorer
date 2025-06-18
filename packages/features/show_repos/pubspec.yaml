@@ -1,0 +1,25 @@
+name: show_repos
+publish_to: 'none'
+
+version: 0.0.1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core:
+    path: ../../core
+  freezed_annotation: any
+  go_router: any
+  flutter_riverpod: any
+  riverpod_annotation: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: any
+  freezed: any
+  mockito: any
+  riverpod_generator: any
