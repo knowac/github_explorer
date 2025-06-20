@@ -1,8 +1,8 @@
-import 'package:github_explorer/models/pull_request.dart';
+import 'package:github_explorer/models/pull_request_entity.dart';
 import 'package:github_explorer/services/github_service_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../core/constants/constants.dart';
+import '../../packages/core/lib/constants/constants.dart';
 
 part 'pulls.g.dart';
 

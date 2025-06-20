@@ -1,0 +1,14 @@
+name: github_explorer
+
+packages:
+  - .
+  - app
+  - packages/core/*
+  - packages/features/display_errors
+  - packages/features/display_main_scaffold
+  - packages/features/repo_search
+
+scripts:
+  run-app:
+    run: flutter run -t app/lib/main.dart
+    description: Run main app from root

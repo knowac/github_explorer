@@ -5,10 +5,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
-import 'package:github_explorer/models/github_repository.dart' as _i5;
-import 'package:github_explorer/models/issue.dart' as _i6;
-import 'package:github_explorer/models/pull_request.dart' as _i7;
-import 'package:github_explorer/models/repository_details.dart' as _i2;
+import 'package:github_explorer/models/github_repository_entity.dart' as _i5;
+import 'package:github_explorer/models/issue_entity.dart' as _i6;
+import 'package:github_explorer/models/pull_request_entity.dart' as _i7;
+import 'package:github_explorer/models/repository_details_entity.dart' as _i2;
 import 'package:github_explorer/services/github_service.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -29,7 +29,7 @@ import 'package:mockito/mockito.dart' as _i1;
 class _FakeRepositoryDetails_0 extends _i1.SmartFake
     implements _i2.RepositoryDetails {
   _FakeRepositoryDetails_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 /// A class which mocks [GithubService].
@@ -47,16 +47,15 @@ class MockGithubService extends _i1.Mock implements _i3.GithubService {
     required int? perPage,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(
-              #searchRepos,
-              [query],
-              {#page: page, #perPage: perPage},
-            ),
-            returnValue: _i4.Future<List<_i5.GithubRepository>>.value(
-              <_i5.GithubRepository>[],
-            ),
-          )
-          as _i4.Future<List<_i5.GithubRepository>>);
+        Invocation.method(
+          #searchRepos,
+          [query],
+          {#page: page, #perPage: perPage},
+        ),
+        returnValue: _i4.Future<List<_i5.GithubRepository>>.value(
+          <_i5.GithubRepository>[],
+        ),
+      ) as _i4.Future<List<_i5.GithubRepository>>);
 
   @override
   _i4.Future<_i2.RepositoryDetails> fetchRepoDetails(
@@ -64,15 +63,14 @@ class MockGithubService extends _i1.Mock implements _i3.GithubService {
     String? name,
   ) =>
       (super.noSuchMethod(
+        Invocation.method(#fetchRepoDetails, [owner, name]),
+        returnValue: _i4.Future<_i2.RepositoryDetails>.value(
+          _FakeRepositoryDetails_0(
+            this,
             Invocation.method(#fetchRepoDetails, [owner, name]),
-            returnValue: _i4.Future<_i2.RepositoryDetails>.value(
-              _FakeRepositoryDetails_0(
-                this,
-                Invocation.method(#fetchRepoDetails, [owner, name]),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.RepositoryDetails>);
+          ),
+        ),
+      ) as _i4.Future<_i2.RepositoryDetails>);
 
   @override
   _i4.Future<List<_i6.Issue>> fetchIssues(
@@ -82,14 +80,13 @@ class MockGithubService extends _i1.Mock implements _i3.GithubService {
     required int? perPage,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(
-              #fetchIssues,
-              [owner, name],
-              {#page: page, #perPage: perPage},
-            ),
-            returnValue: _i4.Future<List<_i6.Issue>>.value(<_i6.Issue>[]),
-          )
-          as _i4.Future<List<_i6.Issue>>);
+        Invocation.method(
+          #fetchIssues,
+          [owner, name],
+          {#page: page, #perPage: perPage},
+        ),
+        returnValue: _i4.Future<List<_i6.Issue>>.value(<_i6.Issue>[]),
+      ) as _i4.Future<List<_i6.Issue>>);
 
   @override
   _i4.Future<List<_i7.PullRequest>> fetchPullRequests(
@@ -99,14 +96,13 @@ class MockGithubService extends _i1.Mock implements _i3.GithubService {
     required int? perPage,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(
-              #fetchPullRequests,
-              [owner, name],
-              {#page: page, #perPage: perPage},
-            ),
-            returnValue: _i4.Future<List<_i7.PullRequest>>.value(
-              <_i7.PullRequest>[],
-            ),
-          )
-          as _i4.Future<List<_i7.PullRequest>>);
+        Invocation.method(
+          #fetchPullRequests,
+          [owner, name],
+          {#page: page, #perPage: perPage},
+        ),
+        returnValue: _i4.Future<List<_i7.PullRequest>>.value(
+          <_i7.PullRequest>[],
+        ),
+      ) as _i4.Future<List<_i7.PullRequest>>);
 }

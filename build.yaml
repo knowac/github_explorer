@@ -1,0 +1,11 @@
+targets:
+  $default:
+    sources:
+      include:
+        - app/**
+        - packages/core/lib/**
+        - packages/features/**/lib/**
+      exclude:
+        - test/**
+        - lib/**
+        - packages/features/repo_details

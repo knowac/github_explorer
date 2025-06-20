@@ -1,5 +1,5 @@
-import 'package:github_explorer/core/constants/constants.dart';
-import 'package:github_explorer/models/issue.dart';
+import '../../packages/core/lib/constants/constants.dart';
+import 'package:github_explorer/models/issue_entity.dart';
 import 'package:github_explorer/services/github_service_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

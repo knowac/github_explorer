@@ -7,7 +7,6 @@
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
-.fvm/flutter_sdk
 .packages
 .pub-cache/
 .pub/
@@ -302,3 +301,6 @@ hs_err_pid*
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,androidstudio,flutter
+
+# FVM Version Cache
+.fvm/

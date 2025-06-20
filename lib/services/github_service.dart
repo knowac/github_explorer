@@ -1,45 +1,16 @@
 import 'package:dio/dio.dart';
-import 'package:github_explorer/core/constants/urls.dart';
-import 'package:github_explorer/core/errors/exceptions.dart';
+import '../../packages/core/lib/constants/urls.dart';
+import '../../packages/core/lib/errors/exceptions.dart';
 import 'package:github_explorer/generated/l10n.dart';
-import 'package:github_explorer/models/github_repository.dart';
-import 'package:github_explorer/models/issue.dart';
-import 'package:github_explorer/models/pull_request.dart';
-import 'package:github_explorer/models/repository_details.dart';
-import 'package:github_explorer/core/network/api_client.dart';
+import 'package:github_explorer/models/github_repository_entity.dart';
+import 'package:github_explorer/models/issue_entity.dart';
+import 'package:github_explorer/models/pull_request_entity.dart';
+import 'package:github_explorer/models/repository_details_entity.dart';
+import '../../packages/core/lib/network/api_client.dart';
 
 class GithubService {
   final Dio _dio;
   GithubService([Dio? dio]) : _dio = dio ?? ApiClient.instance;
-
-  Future<List<GithubRepository>> searchRepos(
-    String query, {
-    required int page,
-    required int perPage,
-  }) async {
-    try {
-      final response = await _dio.get(
-        kSearchReposUrl,
-        queryParameters: {
-          'q': query,
-          'order': 'asc',
-          'per_page': perPage,
-          'page': page,
-        },
-      );
-      final items = response.data['items'] as List;
-      return items.map((json) => GithubRepository.fromJson(json)).toList();
-    } on DioException catch (ex) {
-      if (ex.response?.statusCode == 403 &&
-          (ex.response?.data['message'] as String?)
-                  ?.contains('API rate limit exceeded') ==
-              true) {
-        throw RateLimitExceededException(S.current.rateLimitError);
-      } else {
-        throw Exception(S.current.generalError);
-      }
-    }
-  }
 
   Future<RepositoryDetails> fetchRepoDetails(String owner, String name) async {
     try {

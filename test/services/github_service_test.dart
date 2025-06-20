@@ -2,17 +2,17 @@ import 'dart:ui';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:github_explorer/core/constants/constants.dart';
-import 'package:github_explorer/core/constants/urls.dart';
-import 'package:github_explorer/core/errors/exceptions.dart';
+import '../../packages/core/lib/constants/constants.dart';
+import '../../packages/core/lib/constants/urls.dart';
+import '../../packages/core/lib/errors/exceptions.dart';
 import 'package:github_explorer/generated/l10n.dart';
-import 'package:github_explorer/models/issue.dart';
-import 'package:github_explorer/models/owner.dart';
-import 'package:github_explorer/models/pull_request.dart';
-import 'package:github_explorer/models/repository_details.dart';
+import 'package:github_explorer/models/issue_entity.dart';
+import 'package:github_explorer/models/owner_entity.dart';
+import 'package:github_explorer/models/pull_request_entity.dart';
+import 'package:github_explorer/models/repository_details_entity.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:github_explorer/services/github_service.dart';
-import 'package:github_explorer/models/github_repository.dart';
+import 'package:github_explorer/models/github_repository_entity.dart';
 
 void main() {
   group(

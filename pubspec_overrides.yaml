@@ -1,0 +1,10 @@
+# melos_managed_dependency_overrides: app,display_errors,display_main_scaffold,repo_search
+dependency_overrides:
+  app:
+    path: app
+  display_errors:
+    path: packages/features/display_errors
+  display_main_scaffold:
+    path: packages/features/display_main_scaffold
+  repo_search:
+    path: packages/features/repo_search

@@ -5,10 +5,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:github_explorer/generated/l10n.dart';
-import 'package:github_explorer/models/github_repository.dart';
+import 'package:github_explorer/models/github_repository_entity.dart';
 import 'package:github_explorer/services/github_service.dart';
 import 'package:github_explorer/services/github_service_provider.dart';
-import 'package:github_explorer/views/screens/search_screen.dart';
+import '../../packages/features/repo_search/lib/src/presentation/views/search_screen.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 

@@ -1,4 +1,4 @@
-import 'package:github_explorer/models/repository_details.dart';
+import 'package:github_explorer/models/repository_details_entity.dart';
 import 'package:github_explorer/services/github_service_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

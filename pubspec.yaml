@@ -1,11 +1,23 @@
 name: github_explorer
 description: Main workspace definition for project
-
+publish_to: none
 version: 0.0.1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0'
 
-workspaces:
-  - app
-  - packages/*
+dependencies:
+  flutter:
+    sdk: flutter
+  dynamic_path_url_strategy: any
+  flutter_riverpod: any
+  app:
+    path: app
+
+dev_dependencies:
+  melos: ^6.3.3
+  build_runner: ^2.5.2
+  flutter_lints: any
+
+flutter:
+  uses-material-design: true
