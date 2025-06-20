@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:repo_details/src/domain/entities/owner_entity.dart';
+
+import 'owner_entity.dart';
 
 part 'repository_details_entity.freezed.dart';
 part 'repository_details_entity.g.dart';

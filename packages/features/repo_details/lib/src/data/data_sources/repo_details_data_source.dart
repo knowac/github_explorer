@@ -1,21 +1,15 @@
+import 'package:core/errors/exceptions.dart';
+import 'package:core/generated/l10n.dart';
 import 'package:dio/dio.dart';
-import '../../packages/core/lib/constants/urls.dart';
-import '../../packages/core/lib/errors/exceptions.dart';
-import 'package:github_explorer/generated/l10n.dart';
-import 'package:github_explorer/models/github_repository_entity.dart';
-import 'package:github_explorer/models/issue_entity.dart';
-import 'package:github_explorer/models/pull_request_entity.dart';
-import 'package:github_explorer/models/repository_details_entity.dart';
-import '../../packages/core/lib/network/api_client.dart';
 
-class GithubService {
+class RepoDetailsDataSource {
+  RepoDetailsDataSource(this._dio);
   final Dio _dio;
-  GithubService([Dio? dio]) : _dio = dio ?? ApiClient.instance;
 
-  Future<RepositoryDetails> fetchRepoDetails(String owner, String name) async {
+  Future<dynamic> fetchRepoDetails(String owner, String name) async {
     try {
       final response = await _dio.get('/repos/$owner/$name');
-      return RepositoryDetails.fromJson(response.data as Map<String, dynamic>);
+      return response.data as Map<String, dynamic>;
     } on DioException catch (ex) {
       if (ex.response?.statusCode == 403 &&
           (ex.response?.data['message'] as String?)
@@ -28,7 +22,7 @@ class GithubService {
     }
   }
 
-  Future<List<Issue>> fetchIssues(
+  Future<List<dynamic>> fetchIssues(
     String owner,
     String name, {
     required int page,
@@ -43,12 +37,7 @@ class GithubService {
           'pull_request': false,
         },
       );
-      final list = (response.data as List)
-          .map(
-            (entry) => Issue.fromJson(entry as Map<String, dynamic>),
-          )
-          .toList();
-      return list;
+      return response.data as List;
     } on DioException catch (ex) {
       if (ex.response?.statusCode == 403 &&
           (ex.response?.data['message'] as String?)
@@ -61,7 +50,7 @@ class GithubService {
     }
   }
 
-  Future<List<PullRequest>> fetchPullRequests(
+  Future<List<dynamic>> fetchPullRequests(
     String owner,
     String name, {
     required int page,
@@ -76,12 +65,7 @@ class GithubService {
           'state': 'open',
         },
       );
-      final list = (response.data as List)
-          .map(
-            (entry) => PullRequest.fromJson(entry as Map<String, dynamic>),
-          )
-          .toList();
-      return list;
+      return response.data as List;
     } on DioException catch (ex) {
       if (ex.response?.statusCode == 403 &&
           (ex.response?.data['message'] as String?)

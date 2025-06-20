@@ -1,8 +1,13 @@
+# melos_managed_dependency_overrides: core,repo_details
 # melos_managed_dependency_overrides: display_errors,display_main_scaffold,repo_search
 dependency_overrides:
+  core:
+    path: ..\\packages\\core
   display_errors:
     path: ../packages/features/display_errors
   display_main_scaffold:
     path: ../packages/features/display_main_scaffold
+  repo_details:
+    path: ..\\packages\\features\\repo_details
   repo_search:
     path: ../packages/features/repo_search

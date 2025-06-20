@@ -1,6 +1,6 @@
-import '../../packages/core/lib/constants/constants.dart';
-import 'package:github_explorer/models/issue_entity.dart';
-import 'package:github_explorer/services/github_service_provider.dart';
+import 'package:core/constants/constants.dart';
+import 'package:repo_details/src/data/providers/repo_details_repository_provider.dart';
+import 'package:repo_details/src/domain/entities/issue_entity.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'issues.g.dart';
@@ -13,10 +13,10 @@ class Issues extends _$Issues {
   bool _isLoadingMore = false;
   bool _hasMore = true;
 
-  final List<Issue> _issues = [];
+  final List<IssueEntity> _issues = [];
 
   @override
-  FutureOr<List<Issue>> build() async {
+  FutureOr<List<IssueEntity>> build() async {
     return [];
   }
 
@@ -32,12 +32,13 @@ class Issues extends _$Issues {
         _currentName = name;
         _currentOwner = owner;
 
-        final issues = await ref.read(githubServiceProvider).fetchIssues(
-              _currentOwner,
-              _currentName,
-              perPage: kGithubPerPage,
-              page: _currentPage,
-            );
+        final issues =
+            await ref.read(repoDetailsRepositoryProvider).fetchIssues(
+                  _currentOwner,
+                  _currentName,
+                  perPage: kGithubPerPage,
+                  page: _currentPage,
+                );
 
         _issues.clear();
         _issues.addAll(issues);
@@ -53,7 +54,7 @@ class Issues extends _$Issues {
     _currentPage++;
 
     try {
-      final issues = await ref.read(githubServiceProvider).fetchIssues(
+      final issues = await ref.read(repoDetailsRepositoryProvider).fetchIssues(
             _currentOwner,
             _currentName,
             perPage: kGithubPerPage,

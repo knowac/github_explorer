@@ -7,8 +7,7 @@ targets:
         enabled: true
       json_serializable:
         enabled: true
-      i18n:
-        enabled: true
     sources:
       - lib/**
       - $package$
+      - lib/$lib$

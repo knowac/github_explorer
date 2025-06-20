@@ -4,6 +4,7 @@ import 'package:display_main_scaffold/display_main_scaffold_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:repo_details/repo_details_export.dart';
 import 'package:repo_search/repo_search_export.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -34,17 +35,17 @@ GoRouter route(Ref ref) {
               );
             },
           ),
-          // GoRoute(
-          //   path: '/repository/:owner/:name',
-          //   builder: (context, state) {
-          //     final owner = state.pathParameters['owner'];
-          //     final name = state.pathParameters['name'];
-          //     return RepositoryDetailsScreen(
-          //       owner: owner,
-          //       name: name,
-          //     );
-          //   },
-          // ),
+          GoRoute(
+            path: '/repository/:owner/:name',
+            builder: (context, state) {
+              final owner = state.pathParameters['owner'];
+              final name = state.pathParameters['name'];
+              return RepositoryDetailsScreen(
+                owner: owner,
+                name: name,
+              );
+            },
+          ),
         ],
       ),
     ],

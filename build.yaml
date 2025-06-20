@@ -4,8 +4,6 @@ targets:
       include:
         - app/**
         - packages/core/lib/**
-        - packages/features/**/lib/**
+        - packages/features/**
       exclude:
         - test/**
-        - lib/**
-        - packages/features/repo_details

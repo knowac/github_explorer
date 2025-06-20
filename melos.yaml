@@ -1,12 +1,13 @@
 name: github_explorer
 
 packages:
-  - .
-  - app
-  - packages/core/*
+  - packages/core
+  - packages/features/repo_search
+  - packages/features/repo_details
   - packages/features/display_errors
   - packages/features/display_main_scaffold
-  - packages/features/repo_search
+  - app
+  - .
 
 scripts:
   run-app:

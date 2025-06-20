@@ -1,16 +1,16 @@
+import 'package:core/constants/constants.dart';
+import 'package:core/generated/l10n.dart';
+import 'package:core/widgets/boxes/default_vertical_sized_box.dart';
+import 'package:core/widgets/lists/issue_tile.dart';
+import 'package:core/widgets/lists/list_separator.dart';
+import 'package:core/widgets/loading_indicator.dart';
+import 'package:core/widgets/texts/center_body_medium_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../packages/core/lib/constants/constants.dart';
-import 'package:github_explorer/generated/l10n.dart';
-import 'package:github_explorer/viewmodels/details.dart';
-import 'package:github_explorer/viewmodels/issues.dart';
-import 'package:github_explorer/viewmodels/pulls.dart';
-import 'package:github_explorer/views/widgets/boxes/default_vertical_sized_box.dart';
-import 'package:github_explorer/views/widgets/lists/issue_tile.dart';
-import 'package:github_explorer/views/widgets/lists/list_separator.dart';
-import '../../../packages/core/lib/widgets/loading_indicator.dart';
-import 'package:github_explorer/views/widgets/texts/center_body_medium_text.dart';
+import 'package:repo_details/src/presenation/providers/details.dart';
+import 'package:repo_details/src/presenation/providers/issues.dart';
+import 'package:repo_details/src/presenation/providers/pulls.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RepositoryDetailsScreen extends ConsumerStatefulWidget {

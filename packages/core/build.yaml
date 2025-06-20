@@ -6,3 +6,4 @@ targets:
     sources:
       - lib/**
       - $package$
+      - lib/$lib$

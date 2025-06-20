@@ -1,8 +1,7 @@
-import 'package:github_explorer/models/pull_request_entity.dart';
-import 'package:github_explorer/services/github_service_provider.dart';
+import 'package:core/constants/constants.dart';
+import 'package:repo_details/src/data/providers/repo_details_repository_provider.dart';
+import 'package:repo_details/src/domain/entities/pull_request_entity.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../packages/core/lib/constants/constants.dart';
 
 part 'pulls.g.dart';
 
@@ -14,10 +13,10 @@ class Pulls extends _$Pulls {
   bool _isLoadingMore = false;
   bool _hasMore = true;
 
-  final List<PullRequest> _pulls = [];
+  final List<PullRequestEntity> _pulls = [];
 
   @override
-  FutureOr<List<PullRequest>> build() async {
+  FutureOr<List<PullRequestEntity>> build() async {
     return [];
   }
 
@@ -38,12 +37,13 @@ class Pulls extends _$Pulls {
         _currentName = name;
         _currentOwner = owner;
 
-        final pulls = await ref.read(githubServiceProvider).fetchPullRequests(
-              _currentOwner,
-              _currentName,
-              perPage: kGithubPerPage,
-              page: _currentPage,
-            );
+        final pulls =
+            await ref.read(repoDetailsRepositoryProvider).fetchPullRequests(
+                  _currentOwner,
+                  _currentName,
+                  perPage: kGithubPerPage,
+                  page: _currentPage,
+                );
 
         _pulls.clear();
         _pulls.addAll(pulls);
@@ -59,12 +59,13 @@ class Pulls extends _$Pulls {
     _currentPage++;
 
     try {
-      final pulls = await ref.read(githubServiceProvider).fetchPullRequests(
-            _currentOwner,
-            _currentName,
-            perPage: kGithubPerPage,
-            page: _currentPage,
-          );
+      final pulls =
+          await ref.read(repoDetailsRepositoryProvider).fetchPullRequests(
+                _currentOwner,
+                _currentName,
+                perPage: kGithubPerPage,
+                page: _currentPage,
+              );
       if (pulls.isEmpty) {
         _hasMore = false;
       } else {

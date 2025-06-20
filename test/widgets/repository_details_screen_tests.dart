@@ -9,7 +9,7 @@ import 'package:github_explorer/models/repository_details_entity.dart';
 import 'package:github_explorer/services/github_service.dart';
 import 'package:github_explorer/services/github_service_provider.dart';
 import 'package:github_explorer/views/screens/repository_details_screen.dart';
-import '../../packages/core/lib/widgets/loading_indicator.dart';
+import 'package:core/widgets/loading_indicator.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:network_image_mock/network_image_mock.dart';

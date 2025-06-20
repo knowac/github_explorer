@@ -6,12 +6,12 @@ part of 'pulls.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pullsHash() => r'e08ead64969b372ba3272f24d648dd6d341f502c';
+String _$pullsHash() => r'3ff2cb741bb59d89792d5eef3825d5d4f8436de2';
 
 /// See also [Pulls].
 @ProviderFor(Pulls)
 final pullsProvider =
-    AutoDisposeAsyncNotifierProvider<Pulls, List<PullRequest>>.internal(
+    AutoDisposeAsyncNotifierProvider<Pulls, List<PullRequestEntity>>.internal(
   Pulls.new,
   name: r'pullsProvider',
   debugGetCreateSourceHash:
@@ -20,6 +20,6 @@ final pullsProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$Pulls = AutoDisposeAsyncNotifier<List<PullRequest>>;
+typedef _$Pulls = AutoDisposeAsyncNotifier<List<PullRequestEntity>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

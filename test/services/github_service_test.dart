@@ -2,9 +2,9 @@ import 'dart:ui';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../../packages/core/lib/constants/constants.dart';
-import '../../packages/core/lib/constants/urls.dart';
-import '../../packages/core/lib/errors/exceptions.dart';
+import 'package:core/constants/constants.dart';
+import 'package:core/constants/urls.dart';
+import 'package:core/errors/exceptions.dart';
 import 'package:github_explorer/generated/l10n.dart';
 import 'package:github_explorer/models/issue_entity.dart';
 import 'package:github_explorer/models/owner_entity.dart';

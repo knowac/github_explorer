@@ -8,7 +8,7 @@ import 'package:github_explorer/generated/l10n.dart';
 import 'package:github_explorer/models/github_repository_entity.dart';
 import 'package:github_explorer/services/github_service.dart';
 import 'package:github_explorer/services/github_service_provider.dart';
-import '../../packages/features/repo_search/lib/src/presentation/views/search_screen.dart';
+import 'package:repo_search/src/presentation/views/search_screen.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
